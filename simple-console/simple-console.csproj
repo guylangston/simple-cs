@@ -10,6 +10,8 @@
     <RootNamespace>simple_console</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <EmbedAllSources>true</EmbedAllSources>
   </PropertyGroup>
+
 
 </Project>

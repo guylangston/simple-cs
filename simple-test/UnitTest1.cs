@@ -5,7 +5,7 @@ public class UnitTest1
     [Fact]
     public void WillPass()
     {
-
+        Assert.Equal(123, 123);
     }
 
     [Fact]
