@@ -1,15 +1,15 @@
-﻿for(int cc=2; cc<20; cc++)
+﻿Console.WriteLine("In");
+for(int cc=2; cc<20; cc++)
 {
     Console.WriteLine($"Num: {cc} has Factors: {string.Join(',', Factorize(cc).Select(x=>x.ToString()))}");
 }
+Console.WriteLine("Out");
+return 0;
 
-
-List<int> Factorize(int n)
+IEnumerable<int> Factorize(int n)
 {
-    var res = new List<int>();
     for(int cc=2; cc<n; cc++)
     {
-        if (n % cc == 0) res.Add(cc);
+        if (n % cc == 0) yield return cc;
     }
-    return res;
 }
