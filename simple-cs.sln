@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "simple-nunit", "simple-nuni
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "csharp-lang", "csharp-lang\csharp-lang.csproj", "{62A03636-74FC-4E64-B402-52E3AA0AC435}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "micro-benchmark", "micro-benchmark\micro-benchmark.csproj", "{9C3C4471-4AE9-47D1-9892-3D6B16CBA569}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,5 +44,9 @@ Global
 		{62A03636-74FC-4E64-B402-52E3AA0AC435}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{62A03636-74FC-4E64-B402-52E3AA0AC435}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{62A03636-74FC-4E64-B402-52E3AA0AC435}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9C3C4471-4AE9-47D1-9892-3D6B16CBA569}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9C3C4471-4AE9-47D1-9892-3D6B16CBA569}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9C3C4471-4AE9-47D1-9892-3D6B16CBA569}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9C3C4471-4AE9-47D1-9892-3D6B16CBA569}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal

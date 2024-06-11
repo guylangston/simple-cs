@@ -1,27 +1,31 @@
 ﻿using System;
-using System.Security.Cryptography;
+using System.Runtime.CompilerServices;
 using BenchmarkDotNet.Attributes;
 using BenchmarkDotNet.Running;
 using BenchmarkDotNet.Diagnosers;
 
-namespace MyBenchmarks
+namespace MicroBenchmark
 {
     [DisassemblyDiagnoser(printInstructionAddresses: true, syntax: DisassemblySyntax.Masm)]
+    [MemoryDiagnoser]
     [RyuJitX64Job]
     public class DelegateSingleVsMulti
     {
         static int someCounter;
 
+        [MethodImpl(MethodImplOptions.NoInlining)]
         public static void SomeCall() { someCounter++; }
 
-
-        // | Method   | Mean       | Error     | StdDev    | Ratio  | RatioSD | Code Size |
-        // |--------- |-----------:|----------:|----------:|-------:|--------:|----------:|
-        // | Single   |  0.5485 ns | 0.0039 ns | 0.0036 ns |   1.00 |    0.00 |     227 B |
-        // | Multiple | 99.6517 ns | 0.6371 ns | 0.5648 ns | 181.70 |    1.78 |   1,522 B |
-        //
         [Benchmark(Baseline=true)]
-        public void Single()
+        public void BaseLine()
+        {
+            SomeCall();
+            SomeCall();
+            SomeCall();
+        }
+
+        [Benchmark]
+        public void InlineFuncSingle()
         {
             var f = () => SomeCall();
             f();
@@ -30,18 +34,36 @@ namespace MyBenchmarks
         }
 
         [Benchmark]
-        public void Multiple()
+        public void InlineFuncMultiple()
         {
             var fff = () => SomeCall();
             fff += () => SomeCall();
             fff += () => SomeCall();
             fff();
         }
+
+        [Benchmark]
+        public void DirectSingle()
+        {
+            var f = SomeCall;
+            f();
+            f();
+            f();
+        }
+
+        [Benchmark]
+        public void DirectMultiple()
+        {
+            var fff = SomeCall;
+            fff += SomeCall;
+            fff += SomeCall;
+            fff();
+        }
     }
 
     public class Program
     {
-        public static void Main(string[] args)
+        public static void Main()
         {
             var summary = BenchmarkRunner.Run(typeof(Program).Assembly);
         }
