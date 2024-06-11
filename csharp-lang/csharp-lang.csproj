@@ -6,6 +6,11 @@
     <RootNamespace>csharp_lang</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
+    <EmbedAllSources>true</EmbedAllSources>
+
+    <PublishAot>true</PublishAot>
+    <IsAotCompatible>true</IsAotCompatible>
+    <EmbedAllSources>true</EmbedAllSources>
   </PropertyGroup>
 
 </Project>
