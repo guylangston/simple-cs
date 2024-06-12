@@ -13,6 +13,8 @@ namespace MicroBenchmark
     {
         static int someCounter;
 
+        public static void Reset() => someCounter = 0;
+
         [MethodImpl(MethodImplOptions.NoInlining)]
         public static void SomeCall() { someCounter++; }
 
@@ -65,7 +67,14 @@ namespace MicroBenchmark
     {
         public static void Main()
         {
-            var summary = BenchmarkRunner.Run(typeof(Program).Assembly);
+            // var summary = BenchmarkRunner.Run(typeof(Program).Assembly);
+            var n = new DelegateSingleVsMulti();
+
+            // warmup
+            for (var cc=0; cc<10_000; cc++) n.DirectSingle();
+
+            DelegateSingleVsMulti.Reset();
+            n.DirectSingle();
         }
     }
 }
