@@ -8,11 +8,11 @@ public class ExampleXunit
         Assert.Equal(123, 123);
     }
 
-    [Fact]
-    public void WillFail()
-    {
-        Assert.Equal(123, 1230);
-    }
+    // [Fact]
+    // public void WillFail()
+    // {
+    //     Assert.Equal(123, 1230);
+    // }
 
     [Theory]
     [InlineData(10, 2)]
@@ -22,10 +22,10 @@ public class ExampleXunit
         Assert.Equal(0, num % factor);
     }
 
-    // [Fact]
-    // public void MayFail()
-    // {
-    //     var random = new Random((int)DateTime.Now.Ticks);
-    //     Assert.True(random.Next(0, 10) > 5);
-    // }
+    [Fact(Skip="Will always fail")]
+    public void MayFail()
+    {
+        var random = new Random((int)DateTime.Now.Ticks);
+        Assert.True(random.Next(0, 10) > 5);
+    }
 }

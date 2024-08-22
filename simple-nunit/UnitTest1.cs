@@ -14,6 +14,7 @@ public class ExampleNUnit
     }
 
     [Test]
+    [Ignore("Will Fail")]
     public void WillFail()
     {
         Assert.AreEqual(123, 123.1);

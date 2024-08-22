@@ -15,14 +15,8 @@
 
     private static void Main(string[] args)
     {
-        // warmup
-        for (int cc = 0; cc < 10000; cc++)
-        {
-            ProfileMe();
-        }
-
-        val = 0;
-        ProfileMe();
-        if (val != 1111) throw new Exception(val.ToString());
+        IEnumerable<int> a = new int[] { 1, 2, 3 };
+        var b = a.ToArray(); // cast is already array? NO
+        Console.WriteLine(Object.ReferenceEquals(a, b)); // false
     }
 }
