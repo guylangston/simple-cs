@@ -1,11 +1,33 @@
+using Xunit.Abstractions;
+
 namespace simple_test;
 
 public class ExampleXunit
 {
+    ITestOutputHelper outp;
+
+    public ExampleXunit(ITestOutputHelper outp)
+    {
+        this.outp = outp;
+    }
+
+    [Fact]
+    public void CanWriteOutput() => outp.WriteLine("Hello World");
+
     [Fact]
     public void WillPass()
     {
         Assert.Equal(123, 123);
+    }
+
+    [Fact]
+    public void CanDebug()
+    {
+        var a = 10;
+        var b = 20;
+        var c = 30;
+        var res = a + b + c;
+        Assert.Equal(60, res);
     }
 
     // [Fact]
