@@ -15,6 +15,11 @@
 
     private static void Main(string[] args)
     {
+       SomePropCollectionVerify.Test();
+    }
+
+    public static void ArrayCasting()
+    {
         IEnumerable<int> a = new int[] { 1, 2, 3 };
         var b = a.ToArray(); // cast is already array? NO
         Console.WriteLine(Object.ReferenceEquals(a, b)); // false
