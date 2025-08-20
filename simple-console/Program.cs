@@ -7,7 +7,8 @@ if (args.Length > 0 && args[0] == "--wait")
 }
 for(int cc=2; cc<20; cc++)
 {
-    Console.WriteLine($"Num: {cc} has Factors: {string.Join(',', Factorize(cc).Select(x=>x.ToString()))}");
+    var factors = Factorize(cc).ToArray(); // for easy debugger attach
+    Console.WriteLine($"Num: {cc} has Factors: {string.Join(',', factors.Select(x=>x.ToString()))}");
 }
 Console.WriteLine("Out");
 return 0;
